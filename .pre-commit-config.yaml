@@ -3,7 +3,6 @@ repos:
     rev: v1.48.0
     hooks:
       - id: terraform_fmt
-      #- id: terraform_validate
       - id: terraform_tflint
         args:
           - '--args=--only=terraform_deprecated_interpolation'
@@ -27,17 +26,9 @@ repos:
       - id: end-of-file-fixer
       - id: check-yaml
 
-#  - repo: https://github.com/bridgecrewio/checkov.git
-#    rev: '2.0.469' # change to tag or sha
-#    hooks:
-#    - id: checkov
-#      verbose: true
-#      args:
-#      - -d . --framework terraform -o output_format json --skip-check CKV_AWS_73
-
   - repo: https://github.com/bridgecrewio/checkov.git
-    rev: '2.0.469' # change to tag or sha
+    rev: '2.0.469'
     hooks:
     - id: checkov
       verbose: true
-      args: [-d, '.', --framework,'terraform', --skip-check, 'CKV_AWS_73,CKV_AWS_120,CKV2_AWS_29,CKV_AWS_59'] # -o, 'json',
+      args: [-d, '.', --framework,'terraform']

@@ -15,7 +15,7 @@
         <img src="https://img.shields.io/twitter/follow/varuntomar2019?style=social&logo=twitter"></a>
 </p>
 
-# Terraform module to create Terraform Template
+# Terraform module to create AWS SNS
 
 ## Versions
 
@@ -41,7 +41,7 @@ terraform destroy -var='teamid=tryme' -var='prjid=project1'
 
 #### Recommended method (stores remote state in S3 using `prjid` and `teamid` to create directory structure):
 
-- Create python 3.6+ virtual environment
+- Create python 3.8+ virtual environment
 ```
 python3 -m venv <venv name>
 ```
@@ -90,11 +90,14 @@ tf -c=aws destroy -var='teamid=foo' -var='prjid=bar'
 - Read more on [tfremote](https://github.com/tomarv2/tfremote)
 ---
 
-#### Terraform Template
+#### SNS
 ```
-module "terraform-template" {
-  source = "../../ecs"
-  # ----------------------------------------------
+module "sns" {
+  source = "../../"
+
+  deploy_sns       = true
+  sns_subscription = false
+  #-----------------------------------------------
   # Note: Do not change teamid and prjid once set.
   teamid = var.teamid
   prjid  = var.prjid
