@@ -26,7 +26,7 @@ data "aws_iam_policy_document" "sns_policy" {
     condition {
       test     = "StringEquals"
       variable = "AWS:principalOrgId"
-      values   = ["o-g29axo4oyt", "o-sna0c2ood6"]
+      values   = ["o-12345678a", "o-12345678b"]
     }
 
     principals {
@@ -35,7 +35,7 @@ data "aws_iam_policy_document" "sns_policy" {
     }
 
     resources = [
-      "arn:aws:sns:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:${var.teamid}-${var.prjid}-notify",
+      "arn:aws:sns:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:${var.teamid}-${var.prjid}",
     ]
   }
 
@@ -69,7 +69,7 @@ data "aws_iam_policy_document" "sns_policy" {
     }
 
     resources = [
-      "arn:aws:sns:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:${var.teamid}-${var.prjid}-notify",
+      "arn:aws:sns:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:${var.teamid}-${var.prjid}",
     ]
 
     sid = "__default_statement_ID"
@@ -98,7 +98,7 @@ data "aws_iam_policy_document" "sns_policy" {
     }
 
     resources = [
-      "arn:aws:sns:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:${var.teamid}-${var.prjid}-notify",
+      "arn:aws:sns:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:${var.teamid}-${var.prjid}",
     ]
 
     sid = "__console_sub_0"
