@@ -1,19 +1,20 @@
-data "aws_region" "current" {}
-
-data "aws_caller_identity" "current" {}
+terraform {
+  required_version = ">= 1.0.1"
+  required_providers {
+    aws = {
+      version = "~> 3.63"
+    }
+  }
+}
 
 provider "aws" {
   region = "us-west-2"
 }
 
-terraform {
-  required_version = ">= 1.0.1"
-  required_providers {
-    aws = {
-      version = ">= 3.63"
-    }
-  }
-}
+data "aws_region" "current" {}
+
+data "aws_caller_identity" "current" {}
+
 
 data "aws_iam_policy_document" "sns_policy" {
   policy_id = "__default_policy_ID"
@@ -106,7 +107,7 @@ data "aws_iam_policy_document" "sns_policy" {
 }
 
 module "sns" {
-  source = "../../"
+  source = "../"
 
   deploy_sns       = true
   sns_subscription = false
