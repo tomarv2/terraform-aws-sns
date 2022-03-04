@@ -1,0 +1,32 @@
+name: terraform-aws-sqs
+'on':
+  push:
+    branches:
+      - main
+
+jobs:
+  file-sync-base:
+    name: Sync files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: adrianjost/files-sync-action@v1.5.1
+        with:
+          COMMIT_MESSAGE: Sync files
+          GITHUB_TOKEN: '${{ secrets.API_TOKEN_GITHUB }}'
+          SRC_ROOT: /aws/terraform-aws-sqs/
+          FILE_PATTERNS: |-
+            .github/.*
+            examples/.*
+            modules/.*
+            scripts/.*
+            infrastructure/.*
+            .*\.tf$
+            .*\.yml$
+            .*\.yaml$
+            .*\.md$
+            .*\.py$
+            .*\.tpl$
+            .gitignore
+            LICENSE
+          TARGET_REPOS: |-
+            tomarv2/terraform-aws-sqs:develop
