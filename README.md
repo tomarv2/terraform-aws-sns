@@ -13,19 +13,19 @@
         <img src="https://img.shields.io/twitter/follow/varuntomar2019?style=social&logo=twitter"></a>
 </p>
 
-# Terraform module to create AWS SNS
+## Terraform module for AWS SNS
 
-## Versions
+### Versions
 
 - Module tested for Terraform 1.0.1.
-- AWS provider version [3.63](https://registry.terraform.io/providers/hashicorp/aws/latest).
+- AWS provider version [3.74](https://registry.terraform.io/providers/hashicorp/aws/latest).
 - `main` branch: Provider versions not pinned to keep up with Terraform releases.
 - `tags` releases: Tags are pinned with versions (use <a href="https://github.com/tomarv2/terraform-aws-sns/tags" alt="GitHub tag">
         <img src="https://img.shields.io/github/v/tag/tomarv2/terraform-aws-sns" /></a> in your releases).
 
-## Usage
+### Usage
 
-### Option 1:
+#### Option 1:
 
 ```
 terrafrom init
@@ -35,9 +35,9 @@ terraform destroy -var='teamid=tryme' -var='prjid=project1'
 ```
 **Note:** With this option please take care of remote state storage
 
-### Option 2:
+#### Option 2:
 
-#### Recommended method (stores remote state in S3 using `prjid` and `teamid` to create directory structure):
+##### Recommended method (stores remote state in S3 using `prjid` and `teamid` to create directory structure):
 
 - Create python 3.8+ virtual environment
 ```
@@ -83,12 +83,8 @@ tf -c=aws apply -var='teamid=foo' -var='prjid=bar'
 tf -c=aws destroy -var='teamid=foo' -var='prjid=bar'
 ```
 
-**NOTE:**
-
-- Read more on [tfremote](https://github.com/tomarv2/tfremote)
----
-
-#### SNS
+**Note:** Read more on [tfremote](https://github.com/tomarv2/tfremote)
+##### SNS
 ```
 module "sns" {
   source = "../../"
@@ -104,18 +100,19 @@ module "sns" {
 
 Please refer to examples directory [link](examples) for references.
 
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.1 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 3.63 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 3.74 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 3.63 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 3.74 |
 
 ## Modules
 
@@ -168,3 +165,4 @@ No modules.
 |------|-------------|
 | <a name="output_sns_topic_arn"></a> [sns\_topic\_arn](#output\_sns\_topic\_arn) | The ARN of the SNS topic |
 | <a name="output_sns_topic_name"></a> [sns\_topic\_name](#output\_sns\_topic\_name) | The name of the SNS topic |
+<!-- END_TF_DOCS -->
