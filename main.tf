@@ -1,12 +1,12 @@
 locals {
-  name = var.name != null ? var.name : "${var.teamid}-${var.prjid}"
+  name = var.name
 }
 
 resource "aws_sns_topic" "this" {
   count = var.deploy_sns ? 1 : 0
 
   name = local.name
-  tags = var.custom_tags != null ? merge(var.custom_tags, local.shared_tags) : merge(local.shared_tags)
+  tags = var.extra_tags != null ? merge(var.extra_tags, local.shared_tags) : merge(local.shared_tags)
 
   delivery_policy   = var.delivery_policy
   display_name      = var.display_name
